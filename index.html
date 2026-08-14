@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AwkOrSoft – Official Site</title>
+  
+  <!-- Site Tab Icon (Favicon) -->
+  <link rel="icon" type="image/png" href="logo.png">
+
   <style>
     /* Default Theme: Dark Mode */
     :root {
@@ -11,7 +15,7 @@
       --card-bg: #1e1e1e;
       --card-hover: #282828;
       --text-color: #ffffff;
-      --text-muted: #a0a0a0;
+      --text-muted: #d0d0d0;
       --border-color: #333333;
       --accent-blue: #0078d4;
       --accent-hover: #106ebe;
@@ -27,7 +31,7 @@
       --card-bg: #f2f2f2;
       --card-hover: #e5e5e5;
       --text-color: #000000;
-      --text-muted: #616161;
+      --text-muted: #404040;
       --border-color: #e6e6e6;
       --pill-bg: #f5f5f5;
       --pill-hover: #e0e0e0;
@@ -53,7 +57,7 @@
       text-decoration: none;
     }
 
-    /* Top Rewards/Promo Banner */
+    /* Top Notification Bar */
     .top-banner {
       background-color: var(--top-banner-bg);
       padding: 8px 5%;
@@ -78,14 +82,14 @@
       font-weight: 600;
     }
 
-    /* Navigation Bar */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 5%;
       border-bottom: 1px solid var(--border-color);
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .nav-left {
@@ -94,25 +98,10 @@
       gap: 20px;
     }
 
-    .brand-logo {
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      width: 16px;
-      height: 16px;
-    }
-
-    .logo-square {
-      background-color: var(--accent-blue);
+    .brand-logo-img {
+      height: 32px;
+      width: auto;
+      display: block;
     }
 
     .nav-links-list {
@@ -141,7 +130,7 @@
       font-size: 12px;
     }
 
-    /* Blue Announcement Sub-Banner */
+    /* Sub-Banner */
     .sub-banner {
       background-color: var(--sub-banner-bg);
       color: #ffffff;
@@ -158,7 +147,7 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 50px 20px 40px;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -170,7 +159,7 @@
       letter-spacing: -0.5px;
     }
 
-    /* Action Links as Toggle Tabs / Pills */
+    /* Action Links as Pills */
     .pills-container {
       display: flex;
       justify-content: center;
@@ -200,39 +189,46 @@
       border-color: var(--accent-blue);
     }
 
-    /* Description Box / Search Parody Box */
+    /* Main Exact Description Box */
     .readme-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 24px;
+      padding: 32px;
       text-align: left;
       line-height: 1.6;
       margin-top: 20px;
     }
 
-    .readme-card h2 {
-      font-size: 20px;
-      margin-top: 16px;
+    .readme-card h2.main-heading {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .readme-card h3.section-heading {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 28px;
       margin-bottom: 8px;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 4px;
     }
 
-    .readme-card h2:first-of-type {
-      margin-top: 0;
-    }
-
     .readme-card p {
+      font-size: 18px;
       color: var(--text-muted);
       margin-bottom: 12px;
+      white-space: pre-line;
     }
 
     .readme-card a {
       color: var(--accent-blue);
     }
 
-    /* Grid Feature Cards Below */
+    /* Cards Grid Below */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -259,12 +255,12 @@
     }
 
     .card h3 {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 8px;
     }
 
     .card p {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
       margin-bottom: 16px;
     }
@@ -272,13 +268,13 @@
     .card-link {
       color: var(--accent-blue);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Notification Bar -->
+  <!-- Top Banner -->
   <div class="top-banner">
     <div>Maximize your open-source workflow with EZiER OS resources</div>
     <div class="top-banner-right">
@@ -287,18 +283,12 @@
     </div>
   </div>
 
-  <!-- Microsoft-Style Navbar -->
+  <!-- Navbar with logo.png Image -->
   <nav class="navbar">
     <div class="nav-left">
-      <div class="brand-logo">
-        <div class="logo-grid">
-          <div class="logo-square"></div>
-          <div class="logo-square"></div>
-          <div class="logo-square"></div>
-          <div class="logo-square"></div>
-        </div>
-        AwkOrSoft
-      </div>
+      <a href="#">
+        <img src="logo.png" alt="AwkOrSoft Logo" class="brand-logo-img">
+      </a>
       <ul class="nav-links-list">
         <li><a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank">EZiER OS</a></li>
         <li><a href="https://github.com/ricksansez9-star/ezieros" target="_blank">GitHub</a></li>
@@ -308,11 +298,11 @@
     </div>
     <div class="nav-right">
       <button class="theme-toggle-btn" id="theme-toggle">Light Mode</button>
-      <span>Sign in</span>
+      <span> </span>
     </div>
   </nav>
 
-  <!-- Secondary Blue Announcement Bar -->
+  <!-- Blue Announcement Sub-Banner -->
   <div class="sub-banner">
     Preserving resources for the Open Source Community (OSC) — <a href="https://github.com/ricksansez9-star/ezieros" target="_blank">View GitHub Repo</a>
   </div>
@@ -321,23 +311,29 @@
   <section class="hero">
     <h1>Hi there, welcome to AwkOrSoft</h1>
 
-    <!-- Nav Buttons as Pills -->
+    <!-- Action Pills -->
     <div class="pills-container">
       <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank" class="pill-btn active">EZiER OS Download</a>
       <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank" class="pill-btn">YouTube Channel</a>
-      <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="pill-btn">GitHub Project</a>
+      <a href="https://github.com/ricksansez9-star/ezieros" target="_btn" class="pill-btn">GitHub Project</a>
     </div>
 
-    <!-- Description Card -->
+    <!-- Description Card with Exact Text Formatting -->
     <div class="readme-card">
-      <h2>About AwkOrSoft</h2>
-      <p>Welcome to the official AwkOrSoft Site run by <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">Awkwarrrdd on YouTube</a>. Also known as <a href="https://github.com/ricksansez9-star" target="_blank">ricksansez9-star on GitHub</a>.</p>
+      <h2 class="main-heading">AwkOrSoft</h2>
+      <p>Welcome to the official AwkOrSoft Site ran by <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">Awkwarrrdd on YouTube</a> Also known as <a href="https://github.com/ricksansez9-star" target="_blank">ricksansez9-star on GitHub</a></p>
 
-      <h2>Our Goal</h2>
-      <p>Our goal isn't to make money for some big tech overlord. It's to preserve and give the resources for the Open Source Community (OSC).</p>
+      <h3 class="section-heading">Our Goal</h3>
+      <p>Our goal isn't to make money for some big tech overlord. 
+It's to preserve and give the resources for the Open Source Community. 
+(OSC)</p>
 
-      <h2>EZiER OS</h2>
-      <p>AwkOrSoft has made the official EZiER OS for older models of Chromebooks. It was made for a fun project originally called "Awk OS" this name lived for almost 2-3 months until we moved to "EZiER OS" as our Operating System name.</p>
+      <h3 class="section-heading">EZiER OS</h3>
+      <p>AwkOrSoft has made the official EZiER OS for older models 
+of Chromebooks.
+It was made for a fun project originally called, "Awk OS" this name 
+lived for almost 2-3 months until we moved to "EZiER OS" as our 
+Operating System name.</p>
     </div>
   </section>
 
