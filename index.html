@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AwkOrSoft Official Site</title>
+  <style>
+    /* Default Theme: Dark Mode */
+    :root {
+      --bg-color: #121212;
+      --window-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --title-bar-bg: linear-gradient(90deg, #111111, #333333);
+      --title-text: #00ffcc;
+      --border-color: #444444;
+      --button-bg: #2d2d2d;
+      --button-hover: #3d3d3d;
+      --link-color: #4da6ff;
+      --code-bg: #2a2a2a;
+    }
+
+    /* Toggled Theme: Light Mode */
+    body.light-mode {
+      --bg-color: #e0e0e0;
+      --window-bg: #ffffff;
+      --text-color: #111111;
+      --title-bar-bg: linear-gradient(90deg, #0058b2, #0080ff);
+      --title-text: #ffffff;
+      --border-color: #888888;
+      --button-bg: #f0f0f0;
+      --button-hover: #d8d8d8;
+      --link-color: #0056b3;
+      --code-bg: #f4f4f4;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* OS Window Container */
+    .window {
+      width: 100%;
+      max-width: 800px;
+      background-color: var(--window-bg);
+      border: 2px solid var(--border-color);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Window Title Bar */
+    .title-bar {
+      background: var(--title-bar-bg);
+      color: var(--title-text);
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .title-bar-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .control-btn {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn-close { background-color: #ff5f56; }
+    .btn-min { background-color: #ffbd2e; }
+    .btn-max { background-color: #27c93f; }
+
+    /* Main Content Area */
+    .window-body {
+      padding: 24px;
+    }
+
+    /* Links Navigation Bar */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-button {
+      padding: 8px 16px;
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-button:hover {
+      background-color: var(--button-hover);
+    }
+
+    /* README Content Styling */
+    .readme-container {
+      background-color: var(--code-bg);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+
+    .readme-container h1, .readme-container h2 {
+      margin-top: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 5px;
+    }
+
+    .readme-container a {
+      color: var(--link-color);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="window">
+    <!-- Title Bar -->
+    <div class="title-bar">
+      <span>AwkOrSoft Manager v1.0</span>
+      <div class="title-bar-controls">
+        <span class="control-btn btn-min"></span>
+        <span class="control-btn btn-max"></span>
+        <span class="control-btn btn-close"></span>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="window-body">
+      <!-- Clickable Action Links -->
+      <nav class="nav-links">
+        <a href="https://github.com/your-username/ezier-os/releases" target="_blank" class="nav-button">💾 EZiER OS Download</a>
+        <a href="https://youtube.com/@Awkwarrrdd" target="_blank" class="nav-button">📺 YouTube</a>
+        <a href="https://github.com/ricksansez9-star" target="_blank" class="nav-button">💻 GitHub</a>
+        <button class="nav-button" id="theme-toggle">☀️ Light Mode</button>
+      </nav>
+
+      <!-- README.md Description Container -->
+      <div class="readme-container">
+        <h1>AwkOrSoft</h1>
+        <p>Welcome to the official AwkOrSoft Site run by <a href="https://youtube.com/@Awkwarrrdd" target="_blank">Awkwarrrdd on YouTube</a>. Also known as <a href="https://github.com/ricksansez9-star" target="_blank">ricksansez9-star on GitHub</a>.</p>
+
+        <h2>Our Goal</h2>
+        <p>Our goal isn't to make money for some big tech overlord. It's to preserve and give the resources for the Open Source Community (OSC).</p>
+
+        <h2>EZiER OS</h2>
+        <p>AwkOrSoft has made the official EZiER OS for older models of Chromebooks. It was made for a fun project originally called "Awk OS"—this name lived for almost 2-3 months until we moved to "EZiER OS" as our Operating System name.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for Light/Dark Toggle -->
+  <script>
+    const themeBtn = document.getElementById('theme-toggle');
+    
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      
+      if (document.body.classList.contains('light-mode')) {
+        themeBtn.textContent = '🌙 Dark Mode';
+      } else {
+        themeBtn.textContent = '☀️ Light Mode';
+      }
+    });
+  </script>
+
+</body>
+</html>
