@@ -298,7 +298,7 @@
     </div>
     <div class="nav-right">
       <button class="theme-toggle-btn" id="theme-toggle">Light Mode</button>
-      <span> </span>
+      <span>Sign in</span>
     </div>
   </nav>
 
@@ -313,9 +313,9 @@
 
     <!-- Action Pills -->
     <div class="pills-container">
-      <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank" class="pill-btn active">EZiER OS Download</a>
+      <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank" class="pill-btn active" id="primary-action-btn">EZiER OS Download</a>
       <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank" class="pill-btn">YouTube Channel</a>
-      <a href="https://github.com/ricksansez9-star/ezieros" target="_btn" class="pill-btn">GitHub Project</a>
+      <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="pill-btn">GitHub Project</a>
     </div>
 
     <!-- Description Card with Exact Text Formatting -->
@@ -364,7 +364,12 @@ Operating System name.</p>
     </div>
   </section>
 
+  <!-- Hidden Background Audio Player -->
+  <audio id="bg-music" src="FuckMicrosoftII.mp3" loop preload="auto"></audio>
+
+  <!-- Scripts -->
   <script>
+    // 1. Theme Toggle Script
     const themeBtn = document.getElementById('theme-toggle');
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
@@ -374,6 +379,41 @@ Operating System name.</p>
         themeBtn.textContent = 'Light Mode';
       }
     });
+
+    // 2. EZiER OS Iframe Detector
+    document.addEventListener("DOMContentLoaded", () => {
+      const isEmbedded = window.self !== window.top;
+
+      if (isEmbedded) {
+        const subBanner = document.querySelector(".sub-banner");
+        if (subBanner) {
+          subBanner.innerHTML = "⚡ <strong>EZiER OS Session Active</strong> — Native Environment Detected";
+          subBanner.style.backgroundColor = "#107c41";
+        }
+
+        const primaryBtn = document.getElementById("primary-action-btn");
+        if (primaryBtn) {
+          primaryBtn.textContent = "System Status: Online";
+          primaryBtn.href = "#";
+        }
+      }
+    });
+
+    // 3. Silent Audio Trigger on First Click/Interaction
+    const audio = document.getElementById("bg-music");
+    audio.volume = 0.3; // 30% volume
+
+    const startAudio = () => {
+      audio.play().then(() => {
+        document.removeEventListener("click", startAudio);
+        document.removeEventListener("keydown", startAudio);
+      }).catch(err => {
+        console.log("Autoplay blocked until user interaction:", err);
+      });
+    };
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("keydown", startAudio);
   </script>
 </body>
 </html>
