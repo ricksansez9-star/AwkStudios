@@ -3,193 +3,381 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AwkOrSoft Official Site</title>
+  <title>AwkOrSoft – Official Site</title>
   <style>
     /* Default Theme: Dark Mode */
     :root {
-      --bg-color: #121212;
-      --window-bg: #1e1e1e;
-      --text-color: #e0e0e0;
-      --title-bar-bg: linear-gradient(90deg, #111111, #333333);
-      --title-text: #00ffcc;
-      --border-color: #444444;
-      --button-bg: #2d2d2d;
-      --button-hover: #3d3d3d;
-      --link-color: #4da6ff;
-      --code-bg: #2a2a2a;
+      --bg-color: #111111;
+      --card-bg: #1e1e1e;
+      --card-hover: #282828;
+      --text-color: #ffffff;
+      --text-muted: #a0a0a0;
+      --border-color: #333333;
+      --accent-blue: #0078d4;
+      --accent-hover: #106ebe;
+      --pill-bg: #2d2d2d;
+      --pill-hover: #3d3d3d;
+      --top-banner-bg: #1b2a38;
+      --sub-banner-bg: #005a9e;
     }
 
-    /* Toggled Theme: Light Mode */
+    /* Light Mode */
     body.light-mode {
-      --bg-color: #e0e0e0;
-      --window-bg: #ffffff;
-      --text-color: #111111;
-      --title-bar-bg: linear-gradient(90deg, #0058b2, #0080ff);
-      --title-text: #ffffff;
-      --border-color: #888888;
-      --button-bg: #f0f0f0;
-      --button-hover: #d8d8d8;
-      --link-color: #0056b3;
-      --code-bg: #f4f4f4;
+      --bg-color: #ffffff;
+      --card-bg: #f2f2f2;
+      --card-hover: #e5e5e5;
+      --text-color: #000000;
+      --text-muted: #616161;
+      --border-color: #e6e6e6;
+      --pill-bg: #f5f5f5;
+      --pill-hover: #e0e0e0;
+      --top-banner-bg: #f2f2f2;
+      --sub-banner-bg: #0067b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    /* OS Window Container */
-    .window {
-      width: 100%;
-      max-width: 800px;
-      background-color: var(--window-bg);
-      border: 2px solid var(--border-color);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      border-radius: 6px;
-      overflow: hidden;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    /* Window Title Bar */
-    .title-bar {
-      background: var(--title-bar-bg);
-      color: var(--title-text);
-      padding: 8px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .title-bar-controls {
-      display: flex;
-      gap: 6px;
-    }
-
-    .control-btn {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: none;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .btn-close { background-color: #ff5f56; }
-    .btn-min { background-color: #ffbd2e; }
-    .btn-max { background-color: #27c93f; }
-
-    /* Main Content Area */
-    .window-body {
-      padding: 24px;
-    }
-
-    /* Links Navigation Bar */
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .nav-button {
-      padding: 8px 16px;
-      background-color: var(--button-bg);
-      color: var(--text-color);
-      text-decoration: none;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    .nav-button:hover {
-      background-color: var(--button-hover);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* README Content Styling */
-    .readme-container {
-      background-color: var(--code-bg);
-      border: 1px solid var(--border-color);
-      padding: 20px;
-      border-radius: 4px;
-      line-height: 1.6;
-    }
-
-    .readme-container h1, .readme-container h2 {
-      margin-top: 0;
+    /* Top Rewards/Promo Banner */
+    .top-banner {
+      background-color: var(--top-banner-bg);
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 5px;
     }
 
-    .readme-container a {
-      color: var(--link-color);
+    .top-banner-right {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn-small {
+      background-color: var(--accent-blue);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 5%;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 13px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand-logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .logo-square {
+      background-color: var(--accent-blue);
+    }
+
+    .nav-links-list {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .nav-links-list a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* Blue Announcement Sub-Banner */
+    .sub-banner {
+      background-color: var(--sub-banner-bg);
+      color: #ffffff;
+      text-align: center;
+      padding: 8px;
+      font-size: 13px;
+    }
+
+    .sub-banner a {
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    /* Action Links as Toggle Tabs / Pills */
+    .pills-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .pill-btn {
+      background-color: var(--pill-bg);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      transition: background-color 0.2s;
+    }
+
+    .pill-btn:hover {
+      background-color: var(--pill-hover);
+    }
+
+    .pill-btn.active {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Description Box / Search Parody Box */
+    .readme-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: left;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .readme-card h2 {
+      font-size: 20px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 4px;
+    }
+
+    .readme-card h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .readme-card p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .readme-card a {
+      color: var(--accent-blue);
+    }
+
+    /* Grid Feature Cards Below */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background-color: var(--card-hover);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .card-link {
+      color: var(--accent-blue);
+      font-weight: 600;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <div class="window">
-    <!-- Title Bar -->
-    <div class="title-bar">
-      <span>AwkOrSoft Manager v1.0</span>
-      <div class="title-bar-controls">
-        <span class="control-btn btn-min"></span>
-        <span class="control-btn btn-max"></span>
-        <span class="control-btn btn-close"></span>
-      </div>
-    </div>
-
-    <!-- Body -->
-    <div class="window-body">
-      <!-- Clickable Action Links -->
-      <nav class="nav-links">
-        <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank" class="nav-button">💾 EZiER OS Download</a>
-        <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank" class="nav-button">📺 YouTube</a>
-        <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="nav-button">💻 GitHub</a>
-        <button class="nav-button" id="theme-toggle">☀️ Light Mode</button>
-      </nav>
-
-      <!-- README.md Description Container -->
-      <div class="readme-container">
-        <h1>AwkOrSoft</h1>
-        <p>Welcome to the official AwkOrSoft Site run by <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">Awkwarrrdd on YouTube</a>. Also known as <a href="https://github.com/ricksansez9-star" target="_blank">ricksansez9-star on GitHub</a>.</p>
-
-        <h2>Our Goal</h2>
-        <p>Our goal isn't to make money for some big tech overlord. It's to preserve and give the resources for the Open Source Community (OSC).</p>
-
-        <h2>EZiER OS</h2>
-        <p>AwkOrSoft has made the official EZiER OS for older models of Chromebooks. It was made for a fun project originally called "Awk OS"—this name lived for almost 2-3 months until we moved to "EZiER OS" as our Operating System name.</p>
-      </div>
+  <!-- Top Notification Bar -->
+  <div class="top-banner">
+    <div>Maximize your open-source workflow with EZiER OS resources</div>
+    <div class="top-banner-right">
+      <a href="#">Learn more</a>
+      <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" class="btn-small" target="_blank">Download Now</a>
     </div>
   </div>
 
-  <!-- JavaScript for Light/Dark Toggle -->
+  <!-- Microsoft-Style Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="brand-logo">
+        <div class="logo-grid">
+          <div class="logo-square"></div>
+          <div class="logo-square"></div>
+          <div class="logo-square"></div>
+          <div class="logo-square"></div>
+        </div>
+        AwkOrSoft
+      </div>
+      <ul class="nav-links-list">
+        <li><a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank">EZiER OS</a></li>
+        <li><a href="https://github.com/ricksansez9-star/ezieros" target="_blank">GitHub</a></li>
+        <li><a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">YouTube</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle-btn" id="theme-toggle">Light Mode</button>
+      <span>Sign in</span>
+    </div>
+  </nav>
+
+  <!-- Secondary Blue Announcement Bar -->
+  <div class="sub-banner">
+    Preserving resources for the Open Source Community (OSC) — <a href="https://github.com/ricksansez9-star/ezieros" target="_blank">View GitHub Repo</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Hi there, welcome to AwkOrSoft</h1>
+
+    <!-- Nav Buttons as Pills -->
+    <div class="pills-container">
+      <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank" class="pill-btn active">EZiER OS Download</a>
+      <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank" class="pill-btn">YouTube Channel</a>
+      <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="pill-btn">GitHub Project</a>
+    </div>
+
+    <!-- Description Card -->
+    <div class="readme-card">
+      <h2>About AwkOrSoft</h2>
+      <p>Welcome to the official AwkOrSoft Site run by <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">Awkwarrrdd on YouTube</a>. Also known as <a href="https://github.com/ricksansez9-star" target="_blank">ricksansez9-star on GitHub</a>.</p>
+
+      <h2>Our Goal</h2>
+      <p>Our goal isn't to make money for some big tech overlord. It's to preserve and give the resources for the Open Source Community (OSC).</p>
+
+      <h2>EZiER OS</h2>
+      <p>AwkOrSoft has made the official EZiER OS for older models of Chromebooks. It was made for a fun project originally called "Awk OS"—this name lived for almost 2-3 months until we moved to "EZiER OS" as our Operating System name.</p>
+    </div>
+  </section>
+
+  <!-- Feature Cards Grid -->
+  <section class="cards-grid">
+    <div class="card">
+      <div>
+        <h3>EZiER OS</h3>
+        <p>Lightweight operating system build designed for older Chromebook hardware.</p>
+      </div>
+      <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank" class="card-link">Download Page &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Source Code</h3>
+        <p>Explore the complete open-source code base, issue tracker, and updates on GitHub.</p>
+      </div>
+      <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="card-link">Visit GitHub &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Media & Updates</h3>
+        <p>Watch development updates, animations, and project demos on YouTube.</p>
+      </div>
+      <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank" class="card-link">Watch Channel &rarr;</a>
+    </div>
+  </section>
+
   <script>
     const themeBtn = document.getElementById('theme-toggle');
-    
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
-      
       if (document.body.classList.contains('light-mode')) {
-        themeBtn.textContent = '🌙 Dark Mode';
+        themeBtn.textContent = 'Dark Mode';
       } else {
-        themeBtn.textContent = '☀️ Light Mode';
+        themeBtn.textContent = 'Light Mode';
       }
     });
   </script>
-
 </body>
 </html>
