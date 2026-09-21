@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team – Awk Studios</title>
+  
+  <!-- Site Tab Icon (Favicon) -->
+  <link rel="icon" type="image/png" href="./Photos/logo.png">
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Dark Mode (Default) */
+    :root {
+      --bg-color: #0d0f12;
+      --card-bg: #161a22;
+      --card-hover: #1f2430;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --border-color: #30363d;
+      --accent-blue: #0969da;
+      --accent-hover: #1f6feb;
+      --accent-glow: rgba(9, 105, 218, 0.25);
+      --pill-bg: #21262d;
+      --pill-text: #c9d1d9;
+      --top-banner-bg: #161b22;
+      --sub-banner-bg: #0969da;
+      --nav-bg: rgba(13, 15, 18, 0.85);
+    }
+
+    /* Light Mode */
+    body.light-mode {
+      --bg-color: #f6f8fa;
+      --card-bg: #ffffff;
+      --card-hover: #f3f4f6;
+      --text-main: #1f2328;
+      --text-muted: #656d76;
+      --border-color: #d0d7de;
+      --accent-blue: #0969da;
+      --accent-hover: #0353e9;
+      --accent-glow: rgba(9, 105, 218, 0.15);
+      --pill-bg: #eff2f5;
+      --pill-text: #424a53;
+      --top-banner-bg: #eaeef2;
+      --sub-banner-bg: #0969da;
+      --nav-bg: rgba(246, 248, 250, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top Bar */
+    .top-banner {
+      background-color: var(--top-banner-bg);
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .top-banner-right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .top-banner a.link-hover:hover {
+      text-decoration: underline;
+    }
+
+    .btn-small {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-small:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background-color: var(--nav-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 5%;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 14px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-logo-img {
+      height: 32px;
+      width: auto;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .nav-links-list {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links-list a {
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links-list a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-toggle-btn {
+      background: var(--pill-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: var(--card-hover);
+      border-color: var(--accent-blue);
+    }
+
+    /* Sub-Banner */
+    .sub-banner {
+      background-color: var(--sub-banner-bg);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .sub-banner a {
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 48px 20px 28px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.8px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--text-muted);
+    }
+
+    /* Content Layout */
+    main {
+      max-width: 1140px;
+      width: 100%;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .category-section {
+      margin-bottom: 48px;
+    }
+
+    .category-header {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .category-badge {
+      font-size: 12px;
+      background-color: var(--pill-bg);
+      color: var(--pill-text);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      font-weight: 500;
+    }
+
+    /* Grid */
+    .employee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .employee-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .employee-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .employee-photo-container {
+      width: 100%;
+      height: 200px;
+      background-color: var(--pill-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .employee-photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .employee-card:hover .employee-photo-container img {
+      transform: scale(1.04);
+    }
+
+    .employee-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .employee-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .employee-role {
+      font-size: 13px;
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .employee-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .employee-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 14px;
+      margin-top: auto;
+    }
+
+    .tag {
+      font-size: 12px;
+      background-color: var(--pill-bg);
+      color: var(--pill-text);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      font-weight: 500;
+    }
+
+    .card-link {
+      color: var(--accent-blue);
+      font-weight: 600;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s ease;
+    }
+
+    .card-link:hover {
+      gap: 8px;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding: 28px 5%;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      background-color: var(--card-bg);
+    }
+
+    footer a {
+      color: var(--accent-blue);
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .nav-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .hero h1 {
+        font-size: 30px;
+      }
+      .top-banner {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <div>Maximize your open-source workflow with EZiER OS resources</div>
+    <div class="top-banner-right">
+      <a href="https://github.com/ricksansez9-star/ezieros" class="link-hover" target="_blank">Learn more</a>
+      <a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" class="btn-small" target="_blank">Download Now</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#">
+        <img src="./Photos/logo.png" alt="Awk Studios Logo" class="brand-logo-img" data-initials="AS">
+      </a>
+      <ul class="nav-links-list">
+        <li><a href="https://ricksansez9-star.github.io/ezierosdownloadpage/mainpage.html" target="_blank">EZiER OS</a></li>
+        <li><a href="https://github.com/ricksansez9-star/ezieros" target="_blank">GitHub</a></li>
+        <li><a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">YouTube</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle-btn" id="theme-toggle">
+        <span id="theme-icon">☀️</span> <span id="theme-text">Light Mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sub-Banner -->
+  <div class="sub-banner">
+    Preserving resources for the Open Source Community (OSC) — <a href="https://github.com/ricksansez9-star/ezieros" target="_blank">View GitHub Repo</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Awk Studios Team Directory</h1>
+    <p>Just the people Awkwarrrdd gave a job to.</p>
+  </section>
+
+  <!-- Content Grid -->
+  <main>
+    
+    <!-- EXECUTIVE -->
+    <section class="category-section">
+      <div class="category-header">
+        <span>Awk CEO</span>
+        <span class="category-badge">Engineering & OS Development</span>
+      </div>
+      <div class="employee-grid">
+        <div class="employee-card">
+          <div class="employee-photo-container">
+            <img src="./Photos/awkwarrrdd.png" alt="Awkwarrrdd" data-initials="AW">
+          </div>
+          <div class="employee-content">
+            <div>
+              <h3 class="employee-name">Awkwarrrdd</h3>
+              <div class="employee-role">Lead CEO</div>
+              <p class="employee-description">"I made this and I liked it so yeahh!"</p>
+            </div>
+            <div class="employee-footer">
+              <span class="tag">Core Dev</span>
+              <a href="https://github.com/ricksansez9-star" target="_blank" class="card-link">GitHub Profile &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODE -->
+    <section class="category-section">
+      <div class="category-header">
+        <span>Awk Code</span>
+        <span class="category-badge">Engineering & OS Development</span>
+      </div>
+      <div class="employee-grid">
+        <div class="employee-card">
+          <div class="employee-photo-container">
+            <img src="./Photos/awkwarrrdd.png" alt="Awkwarrrdd" data-initials="AW">
+          </div>
+          <div class="employee-content">
+            <div>
+              <h3 class="employee-name">Awkwarrrdd</h3>
+              <div class="employee-role">Main Developer</div>
+              <p class="employee-description">Directs core development of EZiER OS.</p>
+            </div>
+            <div class="employee-footer">
+              <span class="tag">Core Dev</span>
+              <a href="https://github.com/ricksansez9-star" target="_blank" class="card-link">GitHub Profile &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTIONS -->
+    <section class="category-section">
+      <div class="category-header">
+        <span>Awk Productions</span>
+        <span class="category-badge">Media & Content Creation</span>
+      </div>
+      <div class="employee-grid">
+        <div class="employee-card">
+          <div class="employee-photo-container">
+            <img src="./Photos/regularshade.png" alt="RegularShade" data-initials="RS">
+          </div>
+          <div class="employee-content">
+            <div>
+              <h3 class="employee-name">RegularShade</h3>
+              <div class="employee-role">Makes Videos for our software</div>
+              <p class="employee-description">"Too lazy to put a quote here lol"</p>
+            </div>
+            <div class="employee-footer">
+              <span class="tag">Media</span>
+              <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="card-link">Repository &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVERTS -->
+    <section class="category-section">
+      <div class="category-header">
+        <span>Awk Adverts</span>
+        <span class="category-badge">Community Outreach & Marketing</span>
+      </div>
+      <div class="employee-grid">
+        <div class="employee-card">
+          <div class="employee-photo-container">
+            <img src="./Photos/saltythygreat.png" alt="SaltyThyGreat" data-initials="SG">
+          </div>
+          <div class="employee-content">
+            <div>
+              <h3 class="employee-name">SaltyThyGreat</h3>
+              <div class="employee-role">Adverts Maker and Publisher</div>
+              <p class="employee-description">"It's Tuff"</p>
+            </div>
+            <div class="employee-footer">
+              <span class="tag">Outreach</span>
+              <a href="https://github.com/ricksansez9-star/ezieros" target="_blank" class="card-link">Community Hub &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Awk Studios. Preserving resources for the Open Source Community (OSC). Run by <a href="https://www.youtube.com/@Awkwarrrdd" target="_blank">Awkwarrrdd</a>.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Switcher Logic
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+      themeIcon.textContent = isLight ? '🌙' : '☀️';
+    });
+
+    // Fallback Image Handler using SVG data-uri
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+          const initials = this.getAttribute('data-initials') || 'AW';
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><rect width="100%" height="100%" fill="#161a22"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#0969da" font-family="sans-serif" font-size="72" font-weight="bold">${initials}</text></svg>`;
+          this.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
